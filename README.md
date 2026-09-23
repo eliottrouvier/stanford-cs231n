@@ -19,5 +19,7 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 | **01** | **Classification d'images (Fashion-MNIST)** | kNN, Linear SVM, Softmax, Random Forest, MLP 2 couches | **86.05 %** (MLP) | [Lire le log](./01_image_classification_benchmarks/BENCHMARK_REPORT.md) |
 | **02** | **Techniques de Régularisation** | Ridge, Lasso, ElasticNet, Dropout | **+4.0 %** avec Dropout | [Lire le log](./02_regularization_techniques/REGULARIZATION_REPORT.md) |
 | **03** | **Optimisation 2D : GD vs Mini-Batch SGD** | Batch GD, Mini-Batch ($B=32$), Pure SGD ($B=1$) | Trajectoires 2D | [Lire le log](./03_gradient_descent_vs_sgd/OPTIMIZATION_REPORT.md) |
+| **04** | **SGD + Momentum & Nesterov (NAG)** | Vanilla SGD, SGD + Momentum, Nesterov | Ravin 2D (x2.5 plus rapide) | [Lire le log](./04_momentum_and_nesterov/MOMENTUM_REPORT.md) |
+
 
 
