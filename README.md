@@ -21,6 +21,8 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 | **03** | **Optimisation 2D : GD vs Mini-Batch SGD** | Batch GD, Mini-Batch ($B=32$), Pure SGD ($B=1$) | Trajectoires 2D | [Lire le log](./03_gradient_descent_vs_sgd/OPTIMIZATION_REPORT.md) |
 | **04** | **SGD + Momentum & Nesterov (NAG)** | Vanilla SGD, SGD + Momentum, Nesterov | Ravin 2D (x2.5 plus rapide) | [Lire le log](./04_momentum_and_nesterov/MOMENTUM_REPORT.md) |
 | **05** | **Cas d'Échec du Gradient & Optimiseurs Avancés** | SGD, Momentum, RMSProp, Adam | Selles, Minima Locaux, Rosenbrock | [Lire le log](./05_failure_cases_and_advanced_optimizers/OPTIMIZERS_FAILURE_REPORT.md) |
+| **06** | **Adam : Fusion Momentum + RMSProp** | Momentum, RMSProp, Adam (avec vs sans Bias Correction) | Trajectoires 2D & Biais | [Lire le log](./06_adam_optimizer_deep_dive/ADAM_REPORT.md) |
+
 
 
 
