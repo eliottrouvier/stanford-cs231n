@@ -1,33 +1,19 @@
-# Stanford CS231n : Deep Learning for Computer Vision
+# Stanford CS231n : Notes & Expérimentations
 
-Dépôt personnel pour suivre le cours de Stanford **CS231n : Deep Learning for Computer Vision**.
-
-Contient mes implémentations *from scratch*, expérimentations et visualisations personnelles codées au fil des cours.
+Journal de bord et implémentations personnelles *from scratch* suivant le cours Stanford CS231n (Deep Learning for Computer Vision).
 
 ---
 
-## 🛠️ Environnement de développement
-
-Ce projet utilise [uv](https://github.com/astral-sh/uv) pour gérer l'environnement virtuel et les dépendances (Python 3.12, PyTorch avec support Apple Silicon MPS, NumPy, Matplotlib).
+## ⚡ Démarrage rapide
 
 ```bash
-# Cloner le dépôt
-git clone https://github.com/eliottrouvier/stanford-cs231n.git
-cd stanford-cs231n
-
-# Synchroniser l'environnement virtuel
-uv sync
+uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 ```
 
 ---
 
-## 🔬 Expérimentations & Benchmarks
+## 📓 Logs d'Expériences
 
-- 📊 **[Module 01 : Benchmark de Classification d'Images sur Fashion-MNIST](./01_image_classification_benchmarks/BENCHMARK_REPORT.md)**
-  - Comparaison complète de 5 modèles : **kNN** ($k=5$), **Linear SVM** (Hinge Loss *from scratch*), **Softmax Classifier** (*from scratch*), **Random Forest** et **MLP 2 couches** (PyTorch).
-  - Visualisation des templates de poids $W$, graphiques de compromis précision/vitesse et galerie d'outliers / cas de confusion.
-  - Commande pour ré-exécuter le benchmark :
-    ```bash
-    ./.venv/bin/python 01_image_classification_benchmarks/scripts/train_benchmark.py
-    ```
-
+| # | Expérience / Thème | Modèles testés | Précision Max | Rapport |
+| :-: | :--- | :--- | :-: | :--- |
+| **01** | **Classification d'images (Fashion-MNIST)** | kNN, Linear SVM, Softmax, Random Forest, MLP 2 couches | **86.05 %** (MLP) | [Lire le log](./01_image_classification_benchmarks/BENCHMARK_REPORT.md) |
