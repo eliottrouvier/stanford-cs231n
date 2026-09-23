@@ -34,8 +34,8 @@ Ce projet utilise [**uv**](https://github.com/astral-sh/uv), le gestionnaire de 
 
 1. Cloner le dépôt :
    ```bash
-   git clone <URL_DU_REPO>
-   cd "Stanford CS231N"
+   git clone https://github.com/eliottrouvier/stanford-cs231n.git
+   cd stanford-cs231n
    ```
 
 2. Installer l'environnement et les dépendances avec `uv` :
