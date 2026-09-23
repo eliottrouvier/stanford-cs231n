@@ -1,0 +1,25 @@
+[project]
+name = "stanford-cs231n"
+version = "0.1.0"
+description = "Stanford CS231n: Deep Learning for Computer Vision - Notes, Visualizations, and Implementation Scripts"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=1.26.0",
+    "scipy>=1.12.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "pillow>=10.2.0",
+    "tqdm>=4.66.0",
+]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+]
