@@ -30,7 +30,19 @@ w -= (learning_rate / (np.sqrt(v_hat) + 1e-8)) * m_hat # Mise à jour
 
 ---
 
-## 🧭 1. La Synergie : Momentum seul vs RMSProp seul vs Adam
+## 🎯 1. Réplique Exacte de la Slide Stanford CS231n (Les 4 Optimiseurs)
+
+![Réplique Slide CS231n Adam](figures/03_cs231n_slide_replica.png)
+
+> **Observation** :
+> - **SGD (noir)** grimpe lentement le long de la pente et ralentit dès que le gradient faiblit.
+> - **SGD+Momentum (bleu)** est emporté par son inertie (*overshoot* massif) et décrit une large boucle pendulaire.
+> - **RMSProp (rouge)** ajuste immédiatement le pas selon la courbure et prend une trajectoire directe sans rebond.
+> - **Adam (violet)** conjugue l'accélération d'élan de Momentum et la précision d'échelle de RMSProp pour converger de façon stable et rapide.
+
+---
+
+## 🧭 2. La Synergie : Décomposition des Forces
 
 ![Synergie Momentum + RMSProp = Adam](figures/01_adam_synthesis_2d.png)
 
@@ -38,7 +50,7 @@ w -= (learning_rate / (np.sqrt(v_hat) + 1e-8)) * m_hat # Mise à jour
 
 ---
 
-## 🛡️ 2. Le Rôle Vital de la Correction de Biais (*Bias Correction*)
+## 🛡️ 3. Le Rôle Vital de la Correction de Biais (*Bias Correction*)
 
 ![Impact de la Correction de Biais](figures/02_bias_correction_impact.png)
 

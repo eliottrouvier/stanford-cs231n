@@ -244,6 +244,111 @@ def run_bias_correction_experiment():
 
 
 # -----------------------------------------------------------------------------
+# EXPÉRIENCE 3 : RÉPLIQUE EXACTE DE LA SLIDE DE COURS CS231N
+# -----------------------------------------------------------------------------
+def run_cs231n_slide_replica():
+    print("🔹 Expérience 3 : Réplique exacte de la slide CS231n (Bol tourné 2D)...")
+    theta = np.radians(35)
+    R = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
+
+    def rotated_loss_and_grad(w):
+        w_rot = R @ w
+        loss = 0.5 * (0.04 * (w_rot[0]**2) + 1.1 * (w_rot[1]**2))
+        grad_rot = np.array([0.04 * w_rot[0], 1.1 * w_rot[1]])
+        return float(loss), R.T @ grad_rot
+
+    w_init = np.array([0.6, -2.1])
+    steps = 90
+
+    # 1. SGD (Noir)
+    w_sgd = w_init.copy()
+    traj_sgd = [w_sgd.copy()]
+    for _ in range(steps):
+        _, g = rotated_loss_and_grad(w_sgd)
+        w_sgd -= 0.65 * g
+        traj_sgd.append(w_sgd.copy())
+
+    # 2. SGD + Momentum (Bleu) - grand arc / overshoot
+    w_mom = w_init.copy()
+    v_mom = np.zeros_like(w_mom)
+    traj_mom = [w_mom.copy()]
+    for _ in range(steps):
+        _, g = rotated_loss_and_grad(w_mom)
+        v_mom = 0.90 * v_mom + g
+        w_mom -= 0.52 * v_mom
+        traj_mom.append(w_mom.copy())
+
+    # 3. RMSProp (Rouge) - route directe
+    w_rms = w_init.copy()
+    s_rms = np.zeros_like(w_rms)
+    traj_rms = [w_rms.copy()]
+    for _ in range(steps):
+        _, g = rotated_loss_and_grad(w_rms)
+        s_rms = 0.95 * s_rms + 0.05 * (g**2)
+        w_rms -= (0.08 / (np.sqrt(s_rms) + 1e-8)) * g
+        traj_rms.append(w_rms.copy())
+
+    # 4. Adam (Violet) - équilibre parfait
+    w_adam = w_init.copy()
+    m_adam = np.zeros_like(w_adam)
+    v_adam = np.zeros_like(w_adam)
+    traj_adam = [w_adam.copy()]
+    for t in range(1, steps + 1):
+        _, g = rotated_loss_and_grad(w_adam)
+        m_adam = 0.9 * m_adam + 0.1 * g
+        v_adam = 0.999 * v_adam + 0.001 * (g**2)
+        m_hat = m_adam / (1.0 - 0.9**t)
+        v_hat = v_adam / (1.0 - 0.999**t)
+        w_adam -= (0.11 / (np.sqrt(v_hat) + 1e-8)) * m_hat
+        traj_adam.append(w_adam.copy())
+
+    traj_sgd = np.array(traj_sgd)
+    traj_mom = np.array(traj_mom)
+    traj_rms = np.array(traj_rms)
+    traj_adam = np.array(traj_adam)
+
+    set_custom_style()
+    fig, ax = plt.subplots(figsize=(10, 7.5))
+
+    w1_grid = np.linspace(-2.5, 2.5, 350)
+    w2_grid = np.linspace(-2.8, 1.8, 350)
+    W1, W2 = np.meshgrid(w1_grid, w2_grid)
+
+    Z = np.zeros_like(W1)
+    for i in range(W1.shape[0]):
+        for j in range(W1.shape[1]):
+            pt = np.array([W1[i, j], W2[i, j]])
+            pt_rot = R @ pt
+            Z[i, j] = 0.5 * (0.04 * (pt_rot[0]**2) + 1.1 * (pt_rot[1]**2))
+
+    # Fond colormap continue style CS231n
+    im = ax.contourf(W1, W2, Z, levels=65, cmap="turbo", alpha=0.9)
+    plt.colorbar(im, ax=ax, label="Valeur de Perte $L(w_1, w_2)$")
+    ax.contour(W1, W2, Z, levels=16, colors="white", alpha=0.25, linewidths=0.7)
+
+    # Trajectoires
+    ax.plot(traj_sgd[:, 0], traj_sgd[:, 1], color="#111111", linewidth=3.2, label="SGD")
+    ax.plot(traj_mom[:, 0], traj_mom[:, 1], color="#0033CC", linewidth=3.2, label="SGD+Momentum")
+    ax.plot(traj_rms[:, 0], traj_rms[:, 1], color="#CC0000", linewidth=3.2, label="RMSProp")
+    ax.plot(traj_adam[:, 0], traj_adam[:, 1], color="#8A2BE2", linewidth=3.2, label="Adam")
+
+    ax.plot(w_init[0], w_init[1], "wo", markersize=8, markeredgecolor="black", markeredgewidth=2, label="Départ")
+    ax.plot(0, 0, "r*", markersize=14, label="Minimum (0, 0)")
+
+    ax.set_title("Adam : Synthèse des Trajectoires (Réplique de la slide Stanford CS231n)", fontsize=13)
+    ax.set_xlabel(r"Poids $w_1$")
+    ax.set_ylabel(r"Poids $w_2$")
+    ax.legend(loc="upper right", framealpha=0.9, fontsize=10)
+    ax.set_xlim(-2.5, 2.5)
+    ax.set_ylim(-2.8, 1.8)
+
+    out_path = FIGURES_DIR / "03_cs231n_slide_replica.png"
+    fig.savefig(out_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print(f"✅ Figure 3 générée : {out_path.name}")
+
+
+# -----------------------------------------------------------------------------
 # RÉDACTION DU RAPPORT LOG 06
 # -----------------------------------------------------------------------------
 def write_adam_report():
@@ -281,7 +386,19 @@ w -= (learning_rate / (np.sqrt(v_hat) + 1e-8)) * m_hat # Mise à jour
 
 ---
 
-## 🧭 1. La Synergie : Momentum seul vs RMSProp seul vs Adam
+## 🎯 1. Réplique Exacte de la Slide Stanford CS231n (Les 4 Optimiseurs)
+
+![Réplique Slide CS231n Adam](figures/03_cs231n_slide_replica.png)
+
+> **Observation** :
+> - **SGD (noir)** grimpe lentement le long de la pente et ralentit dès que le gradient faiblit.
+> - **SGD+Momentum (bleu)** est emporté par son inertie (*overshoot* massif) et décrit une large boucle pendulaire.
+> - **RMSProp (rouge)** ajuste immédiatement le pas selon la courbure et prend une trajectoire directe sans rebond.
+> - **Adam (violet)** conjugue l'accélération d'élan de Momentum et la précision d'échelle de RMSProp pour converger de façon stable et rapide.
+
+---
+
+## 🧭 2. La Synergie : Décomposition des Forces
 
 ![Synergie Momentum + RMSProp = Adam](figures/01_adam_synthesis_2d.png)
 
@@ -289,7 +406,7 @@ w -= (learning_rate / (np.sqrt(v_hat) + 1e-8)) * m_hat # Mise à jour
 
 ---
 
-## 🛡️ 2. Le Rôle Vital de la Correction de Biais (*Bias Correction*)
+## 🛡️ 3. Le Rôle Vital de la Correction de Biais (*Bias Correction*)
 
 ![Impact de la Correction de Biais](figures/02_bias_correction_impact.png)
 
@@ -307,6 +424,7 @@ def main():
     print("=" * 65)
     run_synthesis_experiment()
     run_bias_correction_experiment()
+    run_cs231n_slide_replica()
     write_adam_report()
     print("\n" + "=" * 65)
     print("✨ ÉTUDE D'ADAM TERMINÉE AVEC SUCCÈS !")
@@ -315,3 +433,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
