@@ -17,3 +17,5 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 | # | Expérience / Thème | Modèles testés | Précision Max | Rapport |
 | :-: | :--- | :--- | :-: | :--- |
 | **01** | **Classification d'images (Fashion-MNIST)** | kNN, Linear SVM, Softmax, Random Forest, MLP 2 couches | **86.05 %** (MLP) | [Lire le log](./01_image_classification_benchmarks/BENCHMARK_REPORT.md) |
+| **02** | **Techniques de Régularisation** | Ridge, Lasso, ElasticNet, Dropout | **+4.0 %** avec Dropout | [Lire le log](./02_regularization_techniques/REGULARIZATION_REPORT.md) |
+
