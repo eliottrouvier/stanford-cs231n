@@ -18,3 +18,16 @@ cd stanford-cs231n
 # Synchroniser l'environnement virtuel
 uv sync
 ```
+
+---
+
+## 🔬 Expérimentations & Benchmarks
+
+- 📊 **[Module 01 : Benchmark de Classification d'Images sur Fashion-MNIST](./01_image_classification_benchmarks/BENCHMARK_REPORT.md)**
+  - Comparaison complète de 5 modèles : **kNN** ($k=5$), **Linear SVM** (Hinge Loss *from scratch*), **Softmax Classifier** (*from scratch*), **Random Forest** et **MLP 2 couches** (PyTorch).
+  - Visualisation des templates de poids $W$, graphiques de compromis précision/vitesse et galerie d'outliers / cas de confusion.
+  - Commande pour ré-exécuter le benchmark :
+    ```bash
+    ./.venv/bin/python 01_image_classification_benchmarks/scripts/train_benchmark.py
+    ```
+
