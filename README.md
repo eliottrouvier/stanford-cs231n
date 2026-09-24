@@ -1,6 +1,6 @@
 # Stanford CS231n : Notes & Expérimentations
 
-Journal de bord et implémentations personnelles (+aides d'antigravity) suivant le cours Stanford CS231n (Deep Learning for Computer Vision).
+Journal de bord et implémentations (+aides d'antigravity) suivant le cours Stanford CS231n (Deep Learning for Computer Vision).
 
 ---
 
