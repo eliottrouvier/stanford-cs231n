@@ -24,9 +24,6 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 | **06** | **Adam : Fusion Momentum + RMSProp** | Momentum, RMSProp, Adam (avec vs sans Bias Correction) | Trajectoires 2D & Biais | [Lire le log](./06_adam_optimizer_deep_dive/ADAM_REPORT.md) |
 | **07** | **Réseau 2 Couches & Fonctions d'Activation** | Sigmoïde, Tanh, ReLU, Leaky ReLU, Linéaire, Mixte | Frontières 2D & Gradient Flow | [Lire le log](./07_neural_networks_and_activations/ACTIVATIONS_REPORT.md) |
 | **08** | **Réseaux Convolutifs (CNN)** | Arithmétique spatiale, MLP vs ConvNet, Filtres & Cartes d'activation | **88.30 %** (ConvNet) | [Lire le log](./08_convolutional_neural_networks/CNN_REPORT.md) |
-
-
-
-
-
-
+| **09** | **Entraînement des Réseaux de Neurones** | Initialisation Kaiming/Xavier, Batch Normalization, LR Schedules (Cosine/Step) | **85.3 %** (BatchNorm à LR=0.1) | [Lire le log](./09_training_neural_networks/TRAINING_REPORT.md) |
+| **10** | **Architectures CNN & Révolution ResNet** | VGG-16, GoogLeNet, ResNet-20 vs Plain-20, MobileNet-V2, ConvNeXt | **86.4 %** (ResNet-20 vs 81.8% Plain) | [Lire le log](./10_cnn_architectures/ARCHITECTURES_REPORT.md) |
+| **11** | **Réseaux Récurrents (RNN) & LSTMs** | Char-RNN Karpathy, Échantillonnage Température, Vanishing Gradient ($T \in [5..50]$) | **Perte 0.069** ($10^5\times$ avantage gradient LSTM) | [Lire le log](./11_recurrent_neural_networks/RNN_REPORT.md) |
