@@ -27,3 +27,5 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 | **09** | **Entraînement des Réseaux de Neurones** | Initialisation Kaiming/Xavier, Batch Normalization, LR Schedules (Cosine/Step) | **85.3 %** (BatchNorm à LR=0.1) | [Lire le log](./09_training_neural_networks/TRAINING_REPORT.md) |
 | **10** | **Architectures CNN & Révolution ResNet** | VGG-16, GoogLeNet, ResNet-20 vs Plain-20, MobileNet-V2, ConvNeXt | **86.4 %** (ResNet-20 vs 81.8% Plain) | [Lire le log](./10_cnn_architectures/ARCHITECTURES_REPORT.md) |
 | **11** | **Réseaux Récurrents (RNN) & LSTMs** | Char-RNN Karpathy, Échantillonnage Température, Vanishing Gradient ($T \in [5..50]$) | **Perte 0.069** ($10^5\times$ avantage gradient LSTM) | [Lire le log](./11_recurrent_neural_networks/RNN_REPORT.md) |
+| **12** | **Visualisation de Saillance (Backpropagation)** | SqueezeNet 1.1, SmoothGrad ($N=60$), Localisation BBox Faiblement Supervisée, Saillance Contrastive | **Sélectivité 100 %** (Chat vs Chien) & BBox non-supervisée | [Lire le log](./12_saliency_maps_and_backprop/SALIENCY_REPORT.md) |
+
