@@ -29,3 +29,14 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 | **11** | **Réseaux Récurrents (RNN) & LSTMs** | Char-RNN Karpathy, Échantillonnage Température, Vanishing Gradient ($T \in [5..50]$) | **Perte 0.069** ($10^5\times$ avantage gradient LSTM) | [Lire le log](./11_recurrent_neural_networks/RNN_REPORT.md) |
 | **12** | **Visualisation de Saillance (Backpropagation)** | SqueezeNet 1.1, SmoothGrad ($N=60$), Localisation BBox Faiblement Supervisée, Saillance Contrastive | **Sélectivité 100 %** (Chat vs Chien) & BBox non-supervisée | [Lire le log](./12_saliency_maps_and_backprop/SALIENCY_REPORT.md) |
 
+---
+
+## 📚 Fiches d'Exercices & Corrigés d'Examen (Obsidian)
+
+Une suite complète de **54 exercices classiques avec corrigés détaillés** (3 par cours, de la Lecture 1 à 18) est organisée dans le coffre Obsidian :
+👉 **Emplacement** : `Documents/Obsidian Vault/CS231n/`
+- **Exercice 1** : Dérivation mathématique formelle (Gradients, pertes, backprop matricielle).
+- **Exercice 2** : Analyse conceptuelle & design d'architecture (Compromis, inductive bias).
+- **Exercice 3** : Calcul pratique & arithmétique de tenseurs (FLOPs, mémoire VRAM, receptive field).
+
+
