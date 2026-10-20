@@ -31,12 +31,3 @@ uv sync  # Installe l'environnement Python 3.12 (PyTorch MPS, NumPy, Matplotlib)
 
 ---
 
-## 📚 Fiches d'Exercices & Corrigés d'Examen (Obsidian)
-
-Une suite complète de **54 exercices classiques avec corrigés détaillés** (3 par cours, de la Lecture 1 à 18) est organisée dans le coffre Obsidian :
-👉 **Emplacement** : `Documents/Obsidian Vault/CS231n/`
-- **Exercice 1** : Dérivation mathématique formelle (Gradients, pertes, backprop matricielle).
-- **Exercice 2** : Analyse conceptuelle & design d'architecture (Compromis, inductive bias).
-- **Exercice 3** : Calcul pratique & arithmétique de tenseurs (FLOPs, mémoire VRAM, receptive field).
-
-
